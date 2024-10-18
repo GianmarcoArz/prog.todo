@@ -12,7 +12,6 @@ import { UsersService } from '../../services/users.service';
 export class UsersComponent {
   users: iUsers[] = [];
   todos: iTodo[] = [];
-  todoService: any;
 
   constructor(private todoSvc: TodoService, private usersSvc: UsersService) {
     this.users = this.usersSvc.arrUsers;

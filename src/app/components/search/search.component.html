@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h2 class="text-center">Search Results for "{{ searchQuery }}"</h2>
+
+  <div *ngIf="filteredTodos.length === 0" class="text-center">
+    <p>No tasks found for the specified user.</p>
+  </div>
+
+  <div *ngIf="filteredTodos.length > 0">
+    <div class="card mt-4" *ngFor="let todo of filteredTodos">
+      <div class="card-body">
+        <h5 class="card-title">Task: {{ todo.todo }}</h5>
+
+        <p>Status: {{ todo.completed ? "Active" : "Completed" }}</p>
+      </div>
+    </div>
+      
+  </div>
+</div>
