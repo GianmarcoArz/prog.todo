@@ -1,17 +1,40 @@
-Copiare
-<div class="users-container-fluid">
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Users</h2>
   <div class="row">
-    <div class="user-card" *ngFor="let user of users">
-      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
-      <img src="{{ user.image }}" alt="" />
-      <ul>
-        <li
-          *ngFor="let todo of getUserTodos(user.id)"
-          [ngStyle]="{ color: todo.completed ? 'green' : 'red' }"
-        >
-          {{ todo.todo }}
-        </li>
-      </ul>
+    <div class="col-md-4 mb-4" *ngFor="let user of users">
+      <div class="card shadow-sm border-light rounded">
+        <img
+          class="card-img-top rounded-top"
+          [src]="user.image"
+          alt="User Image"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            {{ user.firstName }} {{ user.lastName }}
+          </h5>
+          <ul class="list-group list-group-flush mt-2">
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+              *ngFor="let todo of getUserTodos(user.id)"
+              [ngStyle]="{ color: todo.completed ? 'green' : 'red' }"
+            >
+              <span
+                [ngStyle]="{
+                  'font-weight': todo.completed ? 'bold' : 'normal'
+                }"
+              >
+                {{ todo.todo }}
+              </span>
+              <span
+                class="badge rounded-pill"
+                [ngClass]="todo.completed ? 'bg-success' : 'bg-danger'"
+              >
+                {{ todo.completed ? "Completed" : "Pending" }}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

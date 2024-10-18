@@ -1,20 +1,40 @@
-<div class="card" *ngFor="let task of arrTodo">
-  <div
-    class="card-body"
-    [ngClass]="{ 'bg-success': task.completed, 'bg-danger': !task.completed }"
-  >
-    <h5 class="card-title">{{ task.todo }}</h5>
+<div class="container mt-5">
+  <div class="row">
+    <h1 class="text-center mb-4">Todo List</h1>
 
-    <p class="card-text">userId {{ task.id }}</p>
-    <p>{{ task.userName }}</p>
-    <img src="{{ task.image }}" alt="" />
+    <div class="col-md-4 mb-4" *ngFor="let task of arrTodo">
+      <div class="card shadow-lg border border-light">
+        <div
+          class="card-body p-4"
+          [ngClass]="{
+            'bg-success text-white': task.completed,
+            'bg-danger text-white': !task.completed
+          }"
+        >
+          <h4 class="card-title">{{ task.userName }}</h4>
+          <h5 class="card-text mb-3">{{ task.todo }}</h5>
 
-    <input
-      type="checkbox"
-      name="completed"
-      id="completed"
-      [checked]="task.completed"
-      (change)="toggleTaskActive(task)"
-    />
+          <img
+            class="img-fluid rounded-circle"
+            [src]="task.image"
+            alt="User Image"
+            style="max-height: 150px; object-fit: cover"
+          />
+
+          <div class="custom-checkbox mt-3">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              [checked]="task.completed"
+              (change)="toggleTaskActive(task)"
+              id="task-{{ task.id }}"
+            />
+            <label class="custom-control-label" for="task-{{ task.id }}">
+              {{ task.completed ? "Completed" : "Mark as Completed" }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,18 +1,37 @@
 <div class="container mt-5">
-  <h2 class="text-center">Search Results for "{{ searchQuery }}"</h2>
+  <h2 class="text-center mb-4">Search Results for "{{ searchQuery }}"</h2>
 
   <div *ngIf="filteredTodos.length === 0" class="text-center">
-    <p>No tasks found for the specified user.</p>
+    <p class="lead">No tasks found for the specified user.</p>
+    <img
+      src="https://via.placeholder.com/150"
+      alt="No tasks found"
+      class="img-fluid mt-3"
+    />
   </div>
 
   <div *ngIf="filteredTodos.length > 0">
-    <div class="card mt-4" *ngFor="let todo of filteredTodos">
-      <div class="card-body">
-        <h5 class="card-title">Task: {{ todo.todo }}</h5>
-
-        <p>Status: {{ todo.completed ? "Active" : "Completed" }}</p>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card mt-4 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Your Tasks</h5>
+            <hr />
+            <div *ngFor="let todo of filteredTodos" class="mb-3 task-card">
+              <h6 class="task-title">{{ todo.todo }}</h6>
+              <p
+                class="task-status badge"
+                [ngClass]="{
+                  'bg-success': todo.completed,
+                  'bg-danger': !todo.completed
+                }"
+              >
+                {{ todo.completed ? "Active" : "Completed" }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-      
   </div>
 </div>

@@ -1,0 +1,46 @@
+.navbar {
+  background-color: #f8f9fa !important; // Mantenere il colore di base
+  transition: background-color 0.3s ease;
+
+  &.shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem; // Font size personalizzato
+  }
+
+  .nav-link {
+    color: #007bff; // Colore blu Bootstrap
+
+    &:hover {
+      color: #0056b3; // Colore al passaggio del mouse
+      text-decoration: underline;
+    }
+
+    &.active {
+      font-weight: bold;
+      color: #d9534f; // Colore speciale per il link attivo
+    }
+  }
+
+  .search-input {
+    border-radius: 20px; // Rendi gli angoli arrotondati
+    border: 1px solid #007bff; // Bordo personalizzato
+
+    &:focus {
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Focus stato
+      border-color: #0056b3;
+    }
+  }
+
+  .btn-outline-primary {
+    border-radius: 20px; // Rendi gli angoli arrotondati
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #007bff; // Colore di sfondo al passaggio del mouse
+      color: white;
+    }
+  }
+}

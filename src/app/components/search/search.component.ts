@@ -23,11 +23,11 @@ export class SearchComponent {
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.searchQuery = params['query'] || '';
-      this.filterTodos();
+      this.todosSingle();
     });
   }
 
-  filterTodos() {
+  todosSingle() {
     if (this.searchQuery) {
       const userSearched = this.userSvc.arrUsers.filter(
         (user: iUsers) =>

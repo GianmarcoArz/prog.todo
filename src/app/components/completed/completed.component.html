@@ -1,9 +1,15 @@
-<div class="card" *ngFor="let task of arrTodo">
-  <div class="card-body" [ngClass]="{ 'bg-success': task.completed }">
-    <h5 class="card-title">{{ task.todo }}</h5>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Completed Tasks</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let task of arrTodo">
+      <div class="card shadow-sm" *ngIf="task.completed">
+        <div class="card-body bg-success text-white">
+          <h5 class="card-title">{{ task.todo }}</h5>
 
-    <p class="card-text">userId {{ task.id }}</p>
-    <p>{{ task.userName }}</p>
-    <img src="{{ task.image }}" alt="" />
+          <p>{{ task.userName }}</p>
+          <img class="img-fluid" [src]="task.image" alt="User Image" />
+        </div>
+      </div>
+    </div>
   </div>
 </div>

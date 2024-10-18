@@ -1,14 +1,45 @@
-.users-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; // Spazio tra le card
+.container {
+  .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .list-group-item {
+    font-size: 1rem;
+
+    &.completed {
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    &.pending {
+      font-weight: normal;
+      color: #dc3545;
+    }
+  }
 }
 
-.user-card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 15px;
-  width: 300px; // Larghezza fissa per ogni card
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
+@mixin badge-style($bg-color) {
+  background-color: $bg-color;
+  color: white;
+  border-radius: 20px;
+  padding: 0.2rem 0.6rem;
+}
+
+.bg-success {
+  @include badge-style(#28a745);
+}
+
+.bg-danger {
+  @include badge-style(#dc3545);
 }
