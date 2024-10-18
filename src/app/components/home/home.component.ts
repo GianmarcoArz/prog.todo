@@ -12,14 +12,17 @@ import { iTodo } from '../../i-todo';
 export class HomeComponent {
   constructor(private todoSvc: TodoService, private usersSvc: UsersService) {}
 
-  Arrusers: iUsers[] = [];
-  Arrtodo: iTodo[] = [];
+  arrUsers: iUsers[] = [];
+  arrTodo: iTodo[] = [];
 
   ngOnInit() {
-    this.Arrtodo = this.todoSvc.Arrtodo;
-    this.Arrusers = this.usersSvc.Arrusers;
-    this.Arrtodo = this.todoSvc.getUsersId(this.Arrusers);
+    this.arrTodo = this.todoSvc.arrTodo;
+    this.arrUsers = this.usersSvc.arrUsers;
+    this.arrTodo = this.todoSvc.getUsersId(this.arrUsers);
 
-    console.log(this.Arrtodo);
+    console.log(this.arrTodo);
+  }
+  toggleTaskActive(task: iTodo) {
+    this.todoSvc.updateTaskEsecutionSuccess(task);
   }
 }

@@ -6,7 +6,7 @@ import { iUsers } from '../i-users';
   providedIn: 'root',
 })
 export class TodoService {
-  Arrtodo: iTodo[] = [
+  arrTodo: iTodo[] = [
     {
       id: 1,
       todo: 'Do something nice for someone I care about',
@@ -908,19 +908,27 @@ export class TodoService {
       userId: 32,
     },
   ];
+  taskCompleted: iTodo[] = [];
 
   constructor() {}
 
   getUsersId(user: iUsers[]): iTodo[] {
-    return this.Arrtodo.map((task) => {
+    return this.arrTodo.map((task) => {
       const foundUser = user.find((user) => user.id === task.userId);
 
       if (!foundUser) return task;
 
       return {
         ...task,
-        userName: foundUser.firstName,
+        userName: foundUser.firstName + ' ' + foundUser.lastName,
+        image: foundUser.image,
       };
     });
+  }
+  updateTaskEsecutionSuccess(task: iTodo) {
+    task.completed = !task.completed;
+    const index = this.arrTodo.findIndex((p) => p.id === task.id);
+    this.arrTodo[index].completed = !this.arrTodo[index].completed;
+    this.taskCompleted = this.arrTodo.filter((p) => p.completed);
   }
 }

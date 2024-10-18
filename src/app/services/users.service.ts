@@ -5,7 +5,7 @@ import { iUsers } from '../i-users';
   providedIn: 'root',
 })
 export class UsersService {
-  Arrusers: iUsers[] = [
+  arrUsers: iUsers[] = [
     {
       id: 1,
       firstName: 'Terry',

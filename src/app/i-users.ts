@@ -1,6 +1,6 @@
 export interface iUsers {
   id: number;
-  firstName?: string;
+  firstName: string;
   lastName: string;
   email: string;
   image: string;

@@ -1,1 +1,9 @@
-<p>completed works!</p>
+<div class="card" *ngFor="let task of arrTodo">
+  <div class="card-body" [ngClass]="{ 'bg-success': task.completed }">
+    <h5 class="card-title">{{ task.todo }}</h5>
+
+    <p class="card-text">userId {{ task.id }}</p>
+    <p>{{ task.userName }}</p>
+    <img src="{{ task.image }}" alt="" />
+  </div>
+</div>
